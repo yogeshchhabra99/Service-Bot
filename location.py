@@ -58,4 +58,7 @@ def position():
 		m7=1
 	elif col7[2]<50 and col7[1]<50 and col7[0]<50:
 		m7=0
-	return m1*1+m2*2+m3*4+m4*8+m5*16+m6*32+m7*64
+	if m1>=0 and m2>=0 and m3>=0 and m4>=0 and m5>=0 and m6>=0 m7>=0
+		return m1*1+m2*2+m3*4+m4*8+m5*16+m6*32+m7*64
+	else
+		return -1 
