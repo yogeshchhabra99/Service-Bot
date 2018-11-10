@@ -35,6 +35,7 @@ class Control
 					sleep(.01)	#hard coded part here
 					self.motors.stop()
 					char=arr[index]
+					index++
 					if(char==F)
 						self.motors.moveForward
 					else if char==L
