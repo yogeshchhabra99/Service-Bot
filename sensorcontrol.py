@@ -1,11 +1,11 @@
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 
 class Sensors:
 	def __init__(self,s1,s2,s3,s4,s5):
 		#self.motor1=Motor(forward=motor1Pin1,backward=motor1Pin2)
 		#self.motor2=Motor(forward=motor2Pin1,backward=motor2Pin2)
-		GPIO.setMode(GPIO.BOARD)
+		GPIO.setmode(GPIO.BOARD)
 		GPIO.setwarnings(False)
 		GPIO.setup(s1,GPIO.IN)
 		GPIO.setup(s2,GPIO.IN)
