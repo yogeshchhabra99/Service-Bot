@@ -21,14 +21,14 @@ class Control:
 		index=0
 		while 1: #index<len(arr)
 			position=self.sensors.position()
-			if position ==100:
+			if position==10 or position ==100:
 				#self.motors.turnLeftHard  
 				#T point array code here
 				#check for end point
 				self.motors.moveForward()
 				sleep(.01)	#hard coded part here
 				self.motors.stop()
-				if self.sensors.position()==100 :		# assuming rectangular box at the end point
+				if self.sensors.position()==10 or self.sensors.position()==100 :		# assuming rectangular box at the end point
 					break;
 				else:
 					self.motors.moveBackward()

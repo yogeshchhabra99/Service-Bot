@@ -16,24 +16,24 @@ class Sensors:
 	def position(self):
 		m1=GPIO.input(s1)
 		m2=GPIO.input(s2)
-		m3=GPIO.input(s3)
+		m3=GPIO.input(s3)			#led off is 1 and led off is white
 		m4=GPIO.input(s4)
 		m5=GPIO.input(s5)
 		
-		if m1==1 and m4==1 and m2==1 and m3==1 and m5==1:	#T point
+		if m1==0 and m4==0 and m2==0 and m3==0 and m5==0:	#T point
 			return 100
 		
-		if m4==1 and m2==1 and m3==1 :	#T point
+		if m4==0 and m2==0 and m3==0 :	#T point
 			return 10
-		if m2==1 :
+		if m2==0 :
 			return 1
-		if m1==1 :
+		if m1==0 :
 			return 2
-		if m4==1 :
+		if m4==0 :
 			return -1
-		if m5==1 :
+		if m5==0 :
 			return -2
-		if m3==1 :
+		if m3==0 :
 			return 0
 		else:
 			return 20
