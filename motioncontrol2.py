@@ -2,15 +2,15 @@ import sensorcontrol as sc
 import motorcontrol2 as mc
 from time import sleep
 
-s1
-s2
-s3
-s4
-s5
-m11
-m12
-m21
-m22
+s1=3
+s2=5
+s3=7
+s4=11
+s5=13
+m11=15
+m12=19
+m21=21
+m22=23
 
 class Control:
 	def __init__(self):
@@ -21,7 +21,7 @@ class Control:
 		index=0
 		while 1: #index<len(arr)
 			position=self.sensors.position()
-			if position =100:
+			if position ==100:
 				#self.motors.turnLeftHard  
 				#T point array code here
 				#check for end point
@@ -35,7 +35,7 @@ class Control:
 					sleep(.01)	#hard coded part here
 					self.motors.stop()
 					char=arr[index]
-					index++
+					index=index+1
 					if(char==F):
 						self.motors.moveForward
 					elif char==L:
@@ -59,7 +59,7 @@ class Control:
 				self.motors.moveForward
 			elif position==-2 :
 				self.motors.turnRightHard
-			elif position==-1 s:
+			elif position==-1 :
 				self.motors.turnRight
 			sleep(.01)
 			self.motors.stop();
