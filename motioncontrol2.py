@@ -5,7 +5,7 @@ from time import sleep
 s1=3
 s2=5
 s3=7
-s4=11
+s4=11	#near=12
 s5=13
 m11=15
 m12=19

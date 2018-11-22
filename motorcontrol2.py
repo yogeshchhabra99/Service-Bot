@@ -42,7 +42,7 @@ class MotorControl:
 		GPIO.output(self.motor2Pin1,GPIO.HIGH)
 		GPIO.output(self.motor2Pin2,GPIO.LOW)
 
-	def turnReft(self):
+	def turnRight(self):
 		GPIO.output(self.motor1Pin1,GPIO.HIGH)
 		GPIO.output(self.motor1Pin2,GPIO.LOW)
 		GPIO.output(self.motor2Pin1,GPIO.LOW)
@@ -54,7 +54,7 @@ class MotorControl:
 		GPIO.output(self.motor2Pin1,GPIO.HIGH)
 		GPIO.output(self.motor2Pin2,GPIO.LOW)
 
-	def turnReftHard(self):
+	def turnRightHard(self):
 		GPIO.output(self.motor1Pin1,GPIO.HIGH)
 		GPIO.output(self.motor1Pin2,GPIO.LOW)
 		GPIO.output(self.motor2Pin1,GPIO.LOW)
