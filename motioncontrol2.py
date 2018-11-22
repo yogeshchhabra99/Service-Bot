@@ -21,7 +21,9 @@ class Control:
 		index=0
 		while 1: #index<len(arr)
 			position=self.sensors.position()
+			print "position:"+str(position)
 			if position==10 or position ==100:
+				
 				#self.motors.turnLeftHard  
 				#T point array code here
 				#check for end point

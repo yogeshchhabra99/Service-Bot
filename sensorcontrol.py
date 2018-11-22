@@ -24,7 +24,8 @@ class Sensors:
 		m3=GPIO.input(self.s3)			#led off is 1 and led off is white
 		m4=GPIO.input(self.s4)
 		m5=GPIO.input(self.s5)
-		
+		print "sensor outputs:"+str(m1)+" " +str(m2)+" "+str(m3)+" "+str(m4)+" "+str(m5)
+
 		if m1==0 and m4==0 and m2==0 and m3==0 and m5==0:	#T point
 			return 100
 		
