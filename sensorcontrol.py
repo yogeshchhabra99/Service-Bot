@@ -26,20 +26,20 @@ class Sensors:
 		m5=GPIO.input(self.s5)
 		print "sensor outputs:"+str(m1)+" " +str(m2)+" "+str(m3)+" "+str(m4)+" "+str(m5)
 
-		if m1==0 and m4==0 and m2==0 and m3==0 and m5==0:	#T point
+		if m1==1 and m4==1 and m2==1 and m3==1 and m5==1:	#T point
 			return 100
 		
-		if m4==0 and m2==0 and m3==0 :	#T point
+		if m4==1 and m2==1 and m3==1 :	#T point
 			return 10
-		if m2==0 :
+		if m2==1 :
 			return 1
-		if m1==0 :
+		if m1==1 :
 			return 2
-		if m4==0 :
+		if m4==1 :
 			return -1
-		if m5==0 :
+		if m5==1 :
 			return -2
-		if m3==0 :
+		if m3==1 :
 			return 0
 		else:
 			return 20

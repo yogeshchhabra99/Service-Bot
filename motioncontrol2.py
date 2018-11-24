@@ -11,12 +11,16 @@ m11=15
 m12=19
 m21=21
 m22=23
+m11_=8
+m12_=10
+m21_=12
+m22_=16
 
 class Control:
 	def __init__(self):
 		self.sensors=sc.Sensors(s1,s2,s3,s4,s5)
-		self.motors=mc.MotorControl(m11,m12,m21,m22)
-
+		self.motors=mc.MotorControl(m11,m12,m21,m22,m11_,m12_,m21_,m22_)
+	#main function
 	def move(self, arr):
 		index=0
 		while 1: #index<len(arr)
@@ -38,14 +42,14 @@ class Control:
 					self.motors.stop()
 					char=arr[index]
 					index=index+1
-					if(char==F):
+					if(char=='S'):
 						self.motors.moveForward
-					elif char==L:
+					elif char=='L':
 						while self.sensors.position()!=0 :
 							self.motors.turnLeftHard()
 						self.motors.stop()
 						self.motors.moveForward()
-					elif char==R:
+					elif char=='R':
 						while self.sensors.position()!=0 :
 							self.motors.turnRightHard()
 						self.motors.stop()
