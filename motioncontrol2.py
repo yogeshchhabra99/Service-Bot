@@ -7,20 +7,20 @@ s2=5
 s3=7
 s4=11	#near=12
 s5=13
-m11=15
-m12=19
-m21=21
-m22=23
-m11_=8
-m12_=10
-m21_=12
-m22_=16
+m11=29
+m12=33
+m21=35
+m22=37
+
 
 class Control:
 	def __init__(self):
 		self.sensors=sc.Sensors(s1,s2,s3,s4,s5)
-		self.motors=mc.MotorControl(m11,m12,m21,m22,m11_,m12_,m21_,m22_)
+		self.motors=mc.MotorControl(m11,m12,m21,m22)
 	#main function
+	def __del__(self):
+		self.motors.stop()
+		#delete self.motors()
 	def move(self, arr):
 		index=0
 		while 1: #index<len(arr)
@@ -32,7 +32,7 @@ class Control:
 				#T point array code here
 				#check for end point
 				self.motors.moveForward()
-				sleep(.01)	#hard coded part here
+				sleep(.1)	#hard coded part here
 				self.motors.stop()
 				if self.sensors.position()==10 or self.sensors.position()==100 :		# assuming rectangular box at the end point
 					break;
@@ -43,7 +43,7 @@ class Control:
 					char=arr[index]
 					index=index+1
 					if(char=='S'):
-						self.motors.moveForward
+						self.motors.moveForward()
 					elif char=='L':
 						while self.sensors.position()!=0 :
 							self.motors.turnLeftHard()
@@ -58,14 +58,14 @@ class Control:
 	
 				#if end point then break
 			elif position==2 :
-				self.motors.turnLeftHard
+				self.motors.turnLeftHard()
 			elif position==1 :
-				self.motors.turnLeft
+				self.motors.turnLeft()
 			elif position==0 :
-				self.motors.moveForward
+				self.motors.moveForward()
 			elif position==-2 :
-				self.motors.turnRightHard
+				self.motors.turnRightHard()
 			elif position==-1 :
-				self.motors.turnRight
-			sleep(.01)
+				self.motors.turnRight()
+			sleep(.1)
 			self.motors.stop();

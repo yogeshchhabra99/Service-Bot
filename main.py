@@ -2,7 +2,7 @@
 #pos=positiondetect.position()
 #print pos
 
-arr = ['L','R','L','R']
+arr = ['S','L','L','R']
 import motioncontrol2 as cont
 controller=cont.Control()
 controller.move(arr)
