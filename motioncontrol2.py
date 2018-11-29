@@ -59,9 +59,11 @@ class Control:
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
-						while self.sensors.position()!=0 :
+						while self.sensors.position()!=0 and self.sensors.position()!=1 :
 							self.motors.turnLeftHard()
-
+							sleep(0.1)
+							self.motors.stop()
+							sleep(0.1)
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
