@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 
-
+#white=1
+#black=0
 class Sensors:
 	def __init__(self,s1,s2,s3,s4,s5):
 		#self.motor1=Motor(forward=motor1Pin1,backward=motor1Pin2)
@@ -31,6 +32,12 @@ class Sensors:
 		
 		if m4==1 and m2==1 and m3==1 :	#T point
 			return 10
+
+		if m1==1 and m2==1 and m3==1 :	#L and S point
+			return 100
+
+		if m4==1 and m5==1 and m3==1 :	#R and S point
+			return 100
 		if m2==1 :
 			return 1
 		if m1==1 :
