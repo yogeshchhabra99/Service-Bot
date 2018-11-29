@@ -22,7 +22,7 @@ class Control:
 		self.motors.stop()
 		#delete self.motors()
 	def takeUturn(self):
-		new pos=53
+		newpos=53
 		while newpos!=1 and newpos!=2 and newpos!=0:
 			self.motors.moveForward()
 			sleep(0.2)
@@ -42,8 +42,9 @@ class Control:
 			newpos=53
 			print "position:"+str(position)
 			if position==10 or position ==100:
-				sleep(0.2)
-				if self.sensors.position()!=10 and self.sensors.position()!=100:
+				sleep(0.1)
+				pos=self.sensors.position()
+				if pos!=10 and pos!=100:
 					continue
 		
 				#self.motors.turnLeftHard  
@@ -61,7 +62,7 @@ class Control:
 					break
 				else:
 					self.motors.moveForward()
-					sleep(1.3)
+					sleep(0.8)
 					self.motors.stop()
 					sleep(0.1)
 					char=arr[index]
@@ -91,7 +92,7 @@ class Control:
 							self.motors.turnRightHard()
 							sleep(0.2)
 							self.motors.stop()
-							sleep(0.1)
+							sleep(0.01)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						

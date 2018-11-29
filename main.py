@@ -3,7 +3,7 @@
 #print pos
 
 #arr = ['S','L','L','R']
-arr = ['L']
+arr = ['R','S']
 import motioncontrol2 as cont
 controller=cont.Control()
 controller.move(arr)
