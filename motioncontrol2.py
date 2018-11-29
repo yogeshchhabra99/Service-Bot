@@ -70,9 +70,9 @@ class Control:
 					if(char=='S'):				
 						while newpos!=1 and newpos!=-1 and newpos!=0:
 							self.motors.moveForward()
-							sleep(0.1)
+							sleep(0.15)
 							self.motors.stop()
-							sleep(0.01)
+							sleep(0.05)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)	
 						self.motors.stop()
@@ -80,9 +80,9 @@ class Control:
 					elif char=='L':
 						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.turnLeftHard()
-							sleep(0.1)
+							sleep(0.16)
 							self.motors.stop()
-							sleep(0.01)
+							sleep(0.02)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						self.motors.stop()
@@ -90,9 +90,9 @@ class Control:
 					elif char=='R':
 						while newpos!=-1 and newpos!=-2 and newpos!=0:
 							self.motors.turnRightHard()
-							sleep(0.1)
+							sleep(0.15)
 							self.motors.stop()
-							sleep(0.01)
+							sleep(0.05)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						
