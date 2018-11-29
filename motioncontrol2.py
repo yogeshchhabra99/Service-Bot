@@ -47,7 +47,10 @@ class Control:
 				if index>=len(arr):
 					break
 				else:
+					self.motors.moveForward()
+					sleep(1)
 					self.motors.stop()
+					sleep(0.1)
 					char=arr[index]
 					index=index+1
 					if(char=='S'):
@@ -58,6 +61,7 @@ class Control:
 					elif char=='L':
 						while self.sensors.position()!=0 :
 							self.motors.turnLeftHard()
+
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
