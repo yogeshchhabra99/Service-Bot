@@ -25,25 +25,34 @@ class Control:
 		index=0
 		while 1: #index<len(arr)
 			position=self.sensors.position()
+			print "arr:" 
+			print arr
 			print "position:"+str(position)
 			if position==10 or position ==100:
-				
+				sleep(0.2)
+				if self.sensors.position()!=10 and self.sensors.position()!=100:
+					continue
+		
 				#self.motors.turnLeftHard  
 				#T point array code here
 				#check for end point
-				self.motors.moveForward()
-				sleep(.1)	#hard coded part here
-				self.motors.stop()
-				if self.sensors.position()==10 or self.sensors.position()==100 :		# assuming rectangular box at the end point
-					break;
+			#1st method	#self.motors.moveForward()
+			#	sleep(.1)	#hard coded part here
+			#	self.motors.stop()
+			#	if self.sensors.position()==10 or self.sensors.position()==100 :		# assuming rectangular box at the end point
+			#		break;
+			#	else:
+			#		self.motors.moveBackward()
+			#		sleep(.01)	#hard coded part here		#second method
+				if index>=len(arr):
+					break
 				else:
-					self.motors.moveBackward()
-					sleep(.01)	#hard coded part here
 					self.motors.stop()
 					char=arr[index]
 					index=index+1
 					if(char=='S'):
-						self.motors.moveForward()
+						while self.sensors.position()!=0 :	
+							self.motors.moveForward()
 					elif char=='L':
 						while self.sensors.position()!=0 :
 							self.motors.turnLeftHard()
@@ -58,6 +67,10 @@ class Control:
 	
 				#if end point then break
 			elif position==2 :
+				self.motors.moveForward()
+				sleep(0.3)
+				self.motors.stop()
+				sleep(0.1)
 				self.motors.turnLeftHard()
 			elif position==1 :
 				self.motors.turnLeft()
