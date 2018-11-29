@@ -21,12 +21,24 @@ class Control:
 	def __del__(self):
 		self.motors.stop()
 		#delete self.motors()
+	def takeUturn(self):
+		new pos=53
+		while newpos!=1 and newpos!=2 and newpos!=0:
+			self.motors.moveForward()
+			sleep(0.2)
+			self.motors.stop()
+			sleep(0.1)
+			newpos=self.sensors.position()
+			print "new position:" +str(newpos)	
+		self.motors.stop()
+		self.motors.moveForward()
+
 	def move(self, arr):
 		index=0
 		while 1: #index<len(arr)
 			position=self.sensors.position()
-			print "arr:" 
-			print arr
+			#print "arr: " 
+			print "index"+str(index)
 			newpos=53
 			print "position:"+str(position)
 			if position==10 or position ==100:
@@ -49,14 +61,19 @@ class Control:
 					break
 				else:
 					self.motors.moveForward()
-					sleep(1.5)
+					sleep(1.3)
 					self.motors.stop()
 					sleep(0.1)
 					char=arr[index]
 					index=index+1
-					if(char=='S'):
-						while self.sensors.position()!=0 :	
+					if(char=='S'):				
+						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.moveForward()
+							sleep(0.2)
+							self.motors.stop()
+							sleep(0.1)
+							newpos=self.sensors.position()
+							print "new position:" +str(newpos)	
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
@@ -70,22 +87,22 @@ class Control:
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
-						while self.sensors.position()!=0 :
+						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.turnRightHard()
+							sleep(0.2)
+							self.motors.stop()
+							sleep(0.1)
+							newpos=self.sensors.position()
+							print "new position:" +str(newpos)
+						
 						self.motors.stop()
 						self.motors.moveForward()
 					
 	
 				#if end point then break
 			elif position==2 :
-				self.motors.moveForward()
-				sleep(0.5)
-				self.motors.stop()
-				sleep(0.1)
 				self.motors.turnLeftHard()
-				while self.sensors.position()!=0 :
-					print "turning"
-				self.motors.stop()
+				
 			elif position==1 :
 				self.motors.turnLeft()
 			elif position==0 :
