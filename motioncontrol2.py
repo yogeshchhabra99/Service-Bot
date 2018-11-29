@@ -68,11 +68,11 @@ class Control:
 					char=arr[index]
 					index=index+1
 					if(char=='S'):				
-						while newpos!=1 and newpos!=2 and newpos!=0:
+						while newpos!=1 and newpos!=-1 and newpos!=0:
 							self.motors.moveForward()
 							sleep(0.2)
 							self.motors.stop()
-							sleep(0.1)
+							sleep(0.01)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)	
 						self.motors.stop()
@@ -82,13 +82,13 @@ class Control:
 							self.motors.turnLeftHard()
 							sleep(0.2)
 							self.motors.stop()
-							sleep(0.1)
+							sleep(0.01)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
-						while newpos!=1 and newpos!=2 and newpos!=0:
+						while newpos!=-1 and newpos!=-2 and newpos!=0:
 							self.motors.turnRightHard()
 							sleep(0.2)
 							self.motors.stop()
@@ -114,3 +114,4 @@ class Control:
 				self.motors.turnRight()
 			sleep(.1)
 			self.motors.stop();
+			sleep(0.01)
