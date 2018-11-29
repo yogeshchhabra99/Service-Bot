@@ -27,6 +27,7 @@ class Control:
 			position=self.sensors.position()
 			print "arr:" 
 			print arr
+			newpos=53
 			print "position:"+str(position)
 			if position==10 or position ==100:
 				sleep(0.2)
@@ -48,7 +49,7 @@ class Control:
 					break
 				else:
 					self.motors.moveForward()
-					sleep(1)
+					sleep(1.5)
 					self.motors.stop()
 					sleep(0.1)
 					char=arr[index]
@@ -59,11 +60,13 @@ class Control:
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
-						while self.sensors.position()!=0 and self.sensors.position()!=1 :
+						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.turnLeftHard()
-							sleep(0.1)
+							sleep(0.2)
 							self.motors.stop()
 							sleep(0.1)
+							newpos=self.sensors.position()
+print "new position:" +str(newpos)
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
