@@ -11,7 +11,8 @@ m11=29
 m12=33
 m21=35
 m22=37
-
+sleep1=0.15
+sleep2=0.03
 
 class Control:
 	def __init__(self):
@@ -70,9 +71,9 @@ class Control:
 					if(char=='S'):				
 						while newpos!=1 and newpos!=-1 and newpos!=0:
 							self.motors.moveForward()
-							sleep(0.15)
+							sleep(sleep1)
 							self.motors.stop()
-							sleep(0.05)
+							sleep(sleep2)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)	
 						self.motors.stop()
@@ -80,9 +81,9 @@ class Control:
 					elif char=='L':
 						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.turnLeftHard()
-							sleep(0.16)
+							sleep(sleep1)
 							self.motors.stop()
-							sleep(0.02)
+							sleep(sleep2)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						self.motors.stop()
@@ -90,9 +91,9 @@ class Control:
 					elif char=='R':
 						while newpos!=-1 and newpos!=-2 and newpos!=0:
 							self.motors.turnRightHard()
-							sleep(0.15)
+							sleep(sleep1)
 							self.motors.stop()
-							sleep(0.05)
+							sleep(sleep2)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
 						
