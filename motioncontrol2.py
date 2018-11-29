@@ -66,7 +66,7 @@ class Control:
 							self.motors.stop()
 							sleep(0.1)
 							newpos=self.sensors.position()
-print "new position:" +str(newpos)
+							print "new position:" +str(newpos)
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
