@@ -53,6 +53,8 @@ class Control:
 					if(char=='S'):
 						while self.sensors.position()!=0 :	
 							self.motors.moveForward()
+						self.motors.stop()
+						self.motors.moveForward()
 					elif char=='L':
 						while self.sensors.position()!=0 :
 							self.motors.turnLeftHard()
@@ -68,10 +70,13 @@ class Control:
 				#if end point then break
 			elif position==2 :
 				self.motors.moveForward()
-				sleep(0.3)
+				sleep(0.5)
 				self.motors.stop()
 				sleep(0.1)
 				self.motors.turnLeftHard()
+				while self.sensors.position()!=0 :
+					print "turning"
+				self.motors.stop()
 			elif position==1 :
 				self.motors.turnLeft()
 			elif position==0 :
