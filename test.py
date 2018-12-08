@@ -15,13 +15,13 @@ m22=37
 
 motors=mc.MotorControl(m11,m12,m21,m22)
 motors.stop()
-motors.moveForward()
+#motors.moveForward()
+#sleep(5)
+#motors.turnLeftHard()
+#sleep(5)
+motors.turnRightHard()
 sleep(5)
-motors.turnLeft()
-sleep(5)
-motors.turnRight()
-sleep(5)
-motors.stop()	
+#motors.stop()	
 	
 				#if end point then break
 		#	elif position==2 :

@@ -64,7 +64,7 @@ class Control:
 				else:
 					#print "========== to turn"+str(arr[index])	
 					self.motors.moveForward()
-					sleep(0.6)
+					sleep(0.7)
 					self.motors.stop()
 					sleep(0.1)
 					char=arr[index]
@@ -114,6 +114,6 @@ class Control:
 				self.motors.turnRightHard()
 			elif position==-1 :
 				self.motors.turnRight()
-			sleep(0.08)
+			sleep(0.07)
 			self.motors.stop();
 			sleep(0.01)
