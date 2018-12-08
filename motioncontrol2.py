@@ -11,7 +11,7 @@ m11=29
 m12=33
 m21=35
 m22=37
-sleep1=0.15
+sleep1=0.18
 sleep2=0.03
 
 class Control:
@@ -22,10 +22,10 @@ class Control:
 	def __del__(self):
 		self.motors.stop()
 		#delete self.motors()
-	def takeUturn(self):
+	def takeUTurn(self):
 		newpos=53
-		while newpos!=1 and newpos!=2 and newpos!=0:
-			self.motors.moveForward()
+		while newpos!=-1 and newpos!=-2 and newpos!=0:
+			self.motors.turnRightHard()
 			sleep(0.2)
 			self.motors.stop()
 			sleep(0.1)
@@ -62,6 +62,7 @@ class Control:
 				if index>=len(arr):
 					break
 				else:
+					#print "========== to turn"+str(arr[index])	
 					self.motors.moveForward()
 					sleep(0.6)
 					self.motors.stop()
@@ -69,7 +70,7 @@ class Control:
 					char=arr[index]
 					index=index+1
 					if(char=='S'):				
-						while newpos!=1 and newpos!=-1 and newpos!=0:
+						while newpos!=1 and newpos!=-1:
 							self.motors.moveForward()
 							sleep(sleep1)
 							self.motors.stop()
@@ -79,7 +80,7 @@ class Control:
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
-						while newpos!=1 and newpos!=2 and newpos!=0:
+						while newpos!=1 and newpos!=2:
 							self.motors.turnLeftHard()
 							sleep(sleep1)
 							self.motors.stop()
