@@ -11,10 +11,10 @@ m11=29
 m12=33
 m21=35
 m22=37
-sleep1=0.18
+sleep1=0.15
 sleep2=0.03
 
-class Control:
+class MotionControl:
 	def __init__(self):
 		self.sensors=sc.Sensors(s1,s2,s3,s4,s5)
 		self.motors=mc.MotorControl(m11,m12,m21,m22)
@@ -22,31 +22,26 @@ class Control:
 	def __del__(self):
 		self.motors.stop()
 		#delete self.motors()
-	def takeUTurn(self):
+	def takeUturn(self):
 		newpos=53
-		self.motors.moveForward()
-		sleep(1)
-		self.motors.stop()
-		while newpos!=-1 and newpos!=-2:
-			print "taking U turn"
-			self.motors.turnRightHard()
+		while newpos!=1 and newpos!=2 and newpos!=0:
+			self.motors.moveForward()
 			sleep(0.2)
 			self.motors.stop()
 			sleep(0.1)
 			newpos=self.sensors.position()
-			print "new position:" +str(newpos)	
+			print ("new position:" +str(newpos))	
 		self.motors.stop()
 		self.motors.moveForward()
 
 	def move(self, arr):
 		index=0
-		self.takeUTurn()
 		while 1: #index<len(arr)
 			position=self.sensors.position()
 			#print "arr: " 
-			print "index"+str(index)
+			print ("index"+str(index))
 			newpos=53
-			print "position:"+str(position)
+			print ("position:"+str(position))
 			if position==10 or position ==100:
 				sleep(0.1)
 				pos=self.sensors.position()
@@ -67,50 +62,42 @@ class Control:
 				if index>=len(arr):
 					break
 				else:
-					#print "========== to turn"+str(arr[index])	
 					self.motors.moveForward()
-					sleep(0.8)
+					sleep(0.6)
 					self.motors.stop()
 					sleep(0.1)
 					char=arr[index]
 					index=index+1
-					if(char=='S'):	
-									
-						while newpos!=1 and newpos!=-1:
-							print "====going straight on turn"
+					if(char=='S'):				
+						while newpos!=1 and newpos!=-1 and newpos!=0:
 							self.motors.moveForward()
 							sleep(sleep1)
 							self.motors.stop()
 							sleep(sleep2)
 							newpos=self.sensors.position()
-							print "new position:" +str(newpos)	
+							print ("new position:" +str(newpos))	
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
-						
-						while newpos!=1 and newpos!=2:
-							print "=====going left on turn"
+						while newpos!=1 and newpos!=2 and newpos!=0:
 							self.motors.turnLeftHard()
 							sleep(sleep1)
 							self.motors.stop()
 							sleep(sleep2)
 							newpos=self.sensors.position()
-							print "new position:" +str(newpos)
+							print ("new position:" +str(newpos))
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
-						
-						while newpos!=-1 and newpos!=-2:
-							print"====going right on turn"
+						while newpos!=-1 and newpos!=-2 and newpos!=0:
 							self.motors.turnRightHard()
 							sleep(sleep1)
 							self.motors.stop()
 							sleep(sleep2)
 							newpos=self.sensors.position()
-							print "new position:" +str(newpos)
+							print ("new position:" +str(newpos))
 						
 						self.motors.stop()
-						sleep(0.4)
 						self.motors.moveForward()
 					
 	
@@ -126,6 +113,6 @@ class Control:
 				self.motors.turnRightHard()
 			elif position==-1 :
 				self.motors.turnRight()
-			sleep(0.07)
+			sleep(0.08)
 			self.motors.stop();
 			sleep(0.01)

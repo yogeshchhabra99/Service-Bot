@@ -27,14 +27,35 @@ class Control:
 		self.motors.moveForward()
 		sleep(1)
 		self.motors.stop()
-		while newpos!=-1 and newpos!=-2:
+		while True:
 			print "taking U turn"
 			self.motors.turnRightHard()
 			sleep(0.2)
 			self.motors.stop()
 			sleep(0.1)
 			newpos=self.sensors.position()
-			print "new position:" +str(newpos)	
+			print "new position:" +str(newpos)
+			if newpos== -1 or newpos== -2
+				i=1
+				sum1=0
+				while i<=50:
+					print"checking if line"
+					self.motors.moveForward()
+					sleep(0.01)
+					self.motors.stop()
+					sleep(0.03)
+					pos=self.sensors.position()
+					sleep(0.01)
+					if pos==10 or pos==100:
+						sum1=sum1+1
+					i=i+1
+				if sum1<30:
+					print "============"
+					print "NOT A LINE"
+					print "============"
+					continue
+				else 
+					break	
 		self.motors.stop()
 		self.motors.moveForward()
 
@@ -49,17 +70,31 @@ class Control:
 			print "position:"+str(position)
 			if position==10 or position ==100:
 				sleep(0.1)
-				pos=self.sensors.position()
-				if pos!=10 and pos!=100:
+				i=1
+				sum1=0
+				while i<=50:
+					print"checking if line"
+					self.motors.moveForward()
+					sleep(0.01)
+					self.motors.stop()
+					sleep(0.03)
+					pos=self.sensors.position()
+					sleep(0.01)
+					if pos==10 or pos==100:
+						sum1=sum1+1
+					i=i+1
+				if sum1<30:
+					print "============"
+					print "NOT A LINE"
+					print "============"
 					continue
-		
 				#self.motors.turnLeftHard  
 				#T point array code here
 				#check for end point
 			#1st method	#self.motors.moveForward()
 			#	sleep(.1)	#hard coded part here
 			#	self.motors.stop()
-			#	if self.sensors.position()==10 or self.sensors.position()==100 :		# assuming rectangular box at the end point
+			#	if self.sensors.position()==10 or self.sensors.position()==100 :		# assum1ing rectangular box at the end point
 			#		break;
 			#	else:
 			#		self.motors.moveBackward()
@@ -76,19 +111,40 @@ class Control:
 					index=index+1
 					if(char=='S'):	
 									
-						while newpos!=1 and newpos!=-1:
+						while True: #newpos!=1 and newpos!=-1:
 							print "====going straight on turn"
 							self.motors.moveForward()
 							sleep(sleep1)
 							self.motors.stop()
 							sleep(sleep2)
 							newpos=self.sensors.position()
-							print "new position:" +str(newpos)	
+							print "new position:" +str(newpos)
+							if newpos== -1 or newpos== 1:
+								i=1
+								sum1=0
+								while i<=50:
+									print"checking if line"
+									self.motors.moveForward()
+									sleep(0.01)
+									self.motors.stop()
+									sleep(0.03)
+									pos=self.sensors.position()
+									sleep(0.01)
+									if pos==10 or pos==100:
+										sum1=sum1+1
+									i=i+1
+								if sum1<30:
+									print "============"
+									print "NOT A LINE"
+									print "============"
+									continue
+								else:
+									 break
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='L':
 						
-						while newpos!=1 and newpos!=2:
+						while True:
 							print "=====going left on turn"
 							self.motors.turnLeftHard()
 							sleep(sleep1)
@@ -96,11 +152,32 @@ class Control:
 							sleep(sleep2)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
+							if newpos== 1 or newpos== 2:
+								i=1
+								sum1=0
+								while i<=50:
+									print"checking if line"
+									self.motors.moveForward()
+									sleep(0.01)
+									self.motors.stop()
+									sleep(0.03)
+									pos=self.sensors.position()
+									sleep(0.01)
+									if pos==10 or pos==100:
+										sum1=sum1+1
+									i=i+1
+								if sum1<30:
+									print "============"
+									print "NOT A LINE"
+									print "============"
+									continue
+								else:
+									 break
 						self.motors.stop()
 						self.motors.moveForward()
 					elif char=='R':
 						
-						while newpos!=-1 and newpos!=-2:
+						while True:
 							print"====going right on turn"
 							self.motors.turnRightHard()
 							sleep(sleep1)
@@ -108,6 +185,27 @@ class Control:
 							sleep(sleep2)
 							newpos=self.sensors.position()
 							print "new position:" +str(newpos)
+							if newpos== -1 or newpos== -2:
+								i=1
+								sum1=0
+								while i<=50:
+									print"checking if line"
+									self.motors.moveForward()
+									sleep(0.01)
+									self.motors.stop()
+									sleep(0.03)
+									pos=self.sensors.position()
+									sleep(0.01)
+									if pos==10 or pos==100:
+										sum1=sum1+1
+									i=i+1
+								if sum1<30:
+									print "============"
+									print "NOT A LINE"
+									print "============"
+									continue
+								else:
+									 break
 						
 						self.motors.stop()
 						sleep(0.4)
@@ -117,7 +215,6 @@ class Control:
 				#if end point then break
 			elif position==2 :
 				self.motors.turnLeftHard()
-				
 			elif position==1 :
 				self.motors.turnLeft()
 			elif position==0 :
